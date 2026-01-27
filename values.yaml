@@ -1,0 +1,23 @@
+hub:
+  db:
+    pvc:
+      storageClassName: px-csi-replicated
+  
+singleuser:
+  image:
+    name: jupyter/datascience-notebook
+    tag: latest
+  extraLabels:
+    app: "jupyterhub"
+  storage:
+    dynamic:
+      storageClass: px-csi-replicated
+    extraVolumes:
+      shared-data:
+        name: shared-data
+        persistentVolumeClaim:
+          claimName: nfs-data
+    extraVolumeMounts:
+      shared-data:
+        name: shared-data
+        mountPath: /home/jovyan/shared
