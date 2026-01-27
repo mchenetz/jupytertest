@@ -1,0 +1,14 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-data
+  namespace: jupyterhub
+  labels:
+    app: jupyterhub
+spec:
+  storageClassName: portworx-proxy-volume-volume
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
