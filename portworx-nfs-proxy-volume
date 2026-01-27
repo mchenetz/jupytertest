@@ -1,0 +1,10 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: portworx-nfs-proxy-volume
+provisioner: pxd.portworx.com
+parameters:
+  proxy_endpoint: "nfs://<nfs-share-endpoint>"
+  proxy_nfs_exportpath: "/<mount-path>"
+  mount_options: "vers=4.0"
+allowVolumeExpansion: true
